@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Merriweather", sans-serif;
+
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Body ke full screen height dibe */
+    background-color: rgb(36, 30, 30);
+    
+}
+
+
+.logIn-ber {
+    background-color: #222;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    width: 420px;
+    text-align: center;
+}
+
+/* Underline for Log In */
+h1 {
+    position: relative;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 50%;
+    height: 2px;
+    background-color: #ff7e5f;
+    transform: translateX(-50%);
+}
+
+.inputbox {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.inputbox input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ff7e5f;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    color: white;
+}
+
+.inputbox i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff7e5f;
+}
+/* Button Animation */
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(255, 126, 95, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(90deg, #feb47b, #ff7e5f);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 126, 95, 0.5);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Link Styling */
+a {
+    color: #ff7e5f;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #feb47b;
+    text-decoration: underline;
+}
+@keyframes glowingBorder {
+    0% { box-shadow: 0 0 10px rgba(255, 126, 95, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(255, 126, 95, 0.7); }
+    100% { box-shadow: 0 0 10px rgba(255, 126, 95, 0.3); }
+}
+
+.logIn-ber {
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    backdrop-filter: blur(5px);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 420px;
+    text-align: center;
+    animation: glowingBorder 1.5s infinite alternate ease-in-out;
+}
