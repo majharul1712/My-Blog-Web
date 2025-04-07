@@ -1,24 +1,74 @@
-// Sign In Code
-const submitBtn = document.getElementById("submitBtn")
-function submitData(event) {
-    const firstname = document.getElementById("firstname")
-    const lastname = document.getElementById("lastname")
-    const username = document.getElementById("username")
-    const password = document.getElementById("password")
+// Sign in Data
+const submitBtn = document.getElementById("submitbtn");
+const loginBtn = document.getElementById("loginBtn")
+const loginForm = document.getElementById("loginForm")
 
-    const oldUserInfo = JSON.parse(window.localStorage.getItem("UserInfo")) || []
+function submitData(event) {
+    event.preventDefault();
+
+    const firstName = document.getElementById("firstname"); 
+    const lastName = document.getElementById("lastname");
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+
+    
+    const oldUserInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
 
     const newUser = {
-        firstname: firstname.value,
-        lastname: lastname.value,
+        firstName: firstName.value, 
+        lastName: lastName.value,
         username: username.value,
         password: password.value,
-        isLoggedin: true
-    }
-    console.log(oldUserInfo)
+        isLoggedIn: true        
+    };
 
-    oldUserInfo.push(newUser)
+    oldUserInfo.push(newUser);
+
     
-    window.localStorage.setItem("UserInfo", JSON.stringify(oldUserInfo))
-    window.location.replace("/")
+    window.localStorage.setItem("userInfo", JSON.stringify(oldUserInfo));
+
+    
+    console.log("New user info:", newUser);
+    console.log("Updated localStorage data:", JSON.parse(localStorage.getItem("userInfo")));
+
+    
+    firstName.value = "";
+    lastName.value = "";
+    username.value = "";
+    password.value = "";
+
+    window.location.replace("../index.html");
 }
+
+
+submitBtn.addEventListener("click", submitData);
+
+
+
+
+function loginData(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+
+    
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")) || [];
+
+    const user = userInfo.find(
+        (u) =>
+            u.username.toLowerCase() === username.value.toLowerCase() &&
+            u.password === password.value
+    );
+
+    if (user) {
+        user.isLoggedIn = true;
+        localStorage.setItem("loginInfo", JSON.stringify(user));
+        window.location.replace("../index.html");
+    } else {
+        alert("Invalid username or password");
+    }
+}
+
+
+
